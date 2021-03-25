@@ -15,7 +15,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$items->title}}</h5>
                 <p class="card-text">{{$items->content}}</p>
-                <a href="#" class="btn btn-primary">Dettagli</a>
+                <a href="{{route('guest.posts.info',$items->slug)}}" class="btn btn-primary">Dettagli</a>
             </div>
         </div>
         @endforeach
