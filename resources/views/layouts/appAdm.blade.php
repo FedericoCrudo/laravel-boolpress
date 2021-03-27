@@ -15,15 +15,15 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
+           
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -41,7 +41,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav  ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -54,7 +54,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -62,7 +62,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Esci') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -73,11 +73,35 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+            
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main>
+        <div class="wrapp2">
+            <div class="left ">
+                <ul>
+                    <li>
+                        <a href="{{route('home')}}"><i class="fas fa-home"></i>DashBoard</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fas fa-users"></i>Account</a>
+                    </li>
+                    <li>
+                        <a href="{{route('post.index')}}"><i class="far fa-sticky-note"></i>Post</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fas fa-tag"></i>Tags</a>
+                    </li>
+                
+                </ul>
+            </div>
+
+            <div class="right">
+                @yield('content')
+            </div>
+        
+        </div>
+            
         </main>
     </div>
 </body>
