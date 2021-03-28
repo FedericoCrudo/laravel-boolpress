@@ -49,7 +49,7 @@ class PostController extends Controller
     {
         $data=$request->all();
         $iduser= Auth::id();
-        dd($data,$iduser);
+        // dd($data,$iduser);
 
         $newPost=new Post();
         $newPost->user_id=$iduser;
