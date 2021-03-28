@@ -17,8 +17,17 @@
     <textarea type="text" class="form-control" id="descrizione" name="content" placeholder="Descrizione..."></textarea>
   </div>
 
+  @foreach($tags as $items)
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="tags[]"  id="flexCheckChecked" value="{{$items->id}}">
+    <label class="form-check-label" for="flexCheckChecked">
+     {{$items->name}}
+    </label>
+  </div>
+  @endforeach
+
   
-  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="submit" class="btn btn-success mt-10">Submit</button>
 </form>
 
 

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
-
+use App\tag;
 class PostController extends Controller
 {
     /**
@@ -32,7 +32,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+            $tags=tag::all();
+            $data=[
+                'tags'=>$tags
+            ];
+        return view('admin.post.create',$data);
     }
 
     /**
@@ -45,12 +49,14 @@ class PostController extends Controller
     {
         $data=$request->all();
         $iduser= Auth::id();
-        
+        dd($data,$iduser);
+
         $newPost=new Post();
         $newPost->user_id=$iduser;
         $newPost->slug=Str::slug($data['title']);
         $newPost->fill($data);
         $newPost->save();
+        $newPost->tags()->sync($data['tags']);
         return redirect()->route('post.index');
     }
 
