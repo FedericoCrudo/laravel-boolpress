@@ -37,7 +37,8 @@
                     <ul class="navbar-nav mr-auto">
                     <a class="navbar-brand" href="{{ route('guest.posts.index') }}">
                     Post
-                </a>
+                    </a>
+                
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -68,6 +69,8 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="{{  url('/admin') }}">Admin</a>
+
                                 </div>
                             </li>
                         @endguest

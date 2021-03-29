@@ -88,6 +88,9 @@
                 <a class="navbar-brand" href="{{ route('guest.posts.index') }}">
                     Post
                 </a>
+                <a class="navbar-brand" href="{{ route('guest.contatti') }}">
+                    Contatti
+                </a>
                 </div>
             </div>
         </div>
