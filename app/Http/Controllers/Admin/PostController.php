@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\tag;
 class PostController extends Controller
@@ -50,13 +51,20 @@ class PostController extends Controller
         $data=$request->all();
         $iduser= Auth::id();
         // dd($data,$iduser);
-
+        
         $newPost=new Post();
         $newPost->user_id=$iduser;
         $newPost->slug=Str::slug($data['title']);
         $newPost->fill($data);
+        if(array_key_exists('img',$data)){
+            $cover_path=Storage::put('post_covers',$data['img']);
+            $data['cover']=$cover_path;
+            $newPost->cover=$data['cover'];
+        }
         $newPost->save();
-        $newPost->tags()->sync($data['tags']);
+         if(array_key_exists('tags',$data)){
+         $newPost->tags()->sync($data['tags']);
+        }
         return redirect()->route('post.index');
     }
 
@@ -99,8 +107,21 @@ class PostController extends Controller
      */
     public function update(Request $request,Post $post)
     {   
-         dd($request);      
+             
         $data=$request->all();
+        
+       if($post->title!=$data['title']){
+           $slug=Str::slug($data['title']);
+            $data['slug']=$slug;
+       } 
+        
+    
+       if(array_key_exists('img',$data)){
+        $cover_path=Storage::put('post_covers',$data['img']);
+        $data['cover']=$cover_path;
+       }
+       
+       
         $post->update($data);
 
         return redirect()->route('post.index');

@@ -8,7 +8,7 @@ use App\User;
 class Post extends Model
 {
     protected $fillable=[
-        'title','slug','content','user_id'
+        'title','slug','content','user_id','cover'
     ];
     public function user()
     {

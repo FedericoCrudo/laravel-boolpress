@@ -20,7 +20,13 @@
                     <span class="font-weight-bold">Slag:</span>    
                 
                      {{$post->slug}}
-                    </p>
+                </p>
+                <p class="card-text">
+                    <span class="font-weight-bold">IMG:</span>    
+                        <img class="img-card" src="{{asset('storage/'.$post->cover)}}" alt="">
+                     
+                </p>
+                
             </div>
         
         

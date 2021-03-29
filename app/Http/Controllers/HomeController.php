@@ -33,7 +33,7 @@ class HomeController extends Controller
         $newlead= new Lead();
         $newlead->fill($data);
         $newlead->save();
-        Mail::to('assistenza@boolpress.com')->send(new SendNewMail());
+        Mail::to('assistenza@boolpress.com')->send(new SendNewMail($newlead));
         return redirect()->route('guest.contatti')->with('status','ok');
       
     }

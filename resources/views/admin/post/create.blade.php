@@ -5,13 +5,19 @@
     @if (session('success') )
   
     @endif
-<form action="{{route('post.store')}}" method="post">
+<form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
     @method('POST')
     @csrf
   <div class="form-group">
     <label for="title">Titolo</label>
     <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Nome...">
   </div>
+  
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Carica Immagine</label>
+    <input type="file" name="img" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+
   <div class="form-group">
     <label for="content">Descrizione</label>
     <textarea type="text" class="form-control" id="descrizione" name="content" placeholder="Descrizione..."></textarea>

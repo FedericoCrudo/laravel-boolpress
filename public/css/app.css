@@ -10999,3 +10999,17 @@ a.text-dark:focus {
   justify-content: flex-end;
 }
 
+.succes {
+  color: white;
+  font-weight: bold;
+  border: 1px solid;
+  padding: 4px;
+  background-color: #41af4178;
+  border-radius: 6px;
+}
+
+.img-card {
+  max-width: 80%;
+  min-width: 30%;
+}
+
